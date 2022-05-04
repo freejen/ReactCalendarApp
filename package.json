@@ -1,0 +1,23 @@
+{
+  "name": "reactcalendarapp",
+  "version": "1.0.0",
+  "description": "Project for a University course in JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freejen/ReactCalendarApp.git"
+  },
+  "author": "Slobodan Jenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/freejen/ReactCalendarApp/issues"
+  },
+  "homepage": "https://github.com/freejen/ReactCalendarApp#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
