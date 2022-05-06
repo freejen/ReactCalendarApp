@@ -14,36 +14,30 @@ class MeetingsController {
 
   static registerRoutes(app) {
     app.get('/meetings', (request, response) => {
-      new MeetingsController(request, response).getMeetings();
+      let controller = new MeetingsController(request, response);
+      // Had to bind the function to avoid this = undefiend in Bits.
+      controller.runfBitWithMongo(controller.getMeetingsBit.bind(controller));
     });
 
     app.get('/users', (request, response) => {
-      new MeetingsController(request, response).getUsers();
+      let controller = new MeetingsController(request, response);
+      controller.runfBitWithMongo(controller.getUsersBit.bind(controller));
     });
   }
 
-  async runfWithMongo(f) {
+  async runfBitWithMongo(f) {
     await this.mongoDBService.connect();
-    ret = f();
+    let ret = await f();
+    this.mongoDBService.disconnect();
     this.response.send(ret);
   }
 
-  async getUsers() {
-    await this.mongoDBService.connect();
-
-    let users = await this.mongoDBService.find('users');
-
-    this.mongoDBService.disconnect();
-    this.response.send(users);
+  async getUsersBit() {
+    return await this.mongoDBService.find('users');
   }
 
-  async getMeetings() {
-    await this.mongoDBService.connect();
-
-    let meetings = await this.mongoDBService.find('meetings');
-
-    this.mongoDBService.disconnect();
-    this.response.send(meetings);
+  async getMeetingsBit() {
+    return await this.mongoDBService.find('meetings');
   }
 
   
