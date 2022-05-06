@@ -38,6 +38,11 @@ class MeetingsController {
       const controller = new MeetingsController(request, response);
       controller.runfBitWithMongo(controller.postMeetingBit.bind(controller));
     });
+
+    app.put('/meetings/:id', (request, response) => {
+      const controller = new MeetingsController(request, response);
+      controller.runfBitWithMongo(controller.putMeetingBit.bind(controller));
+    });
   }
 
   async runfBitWithMongo(f) {
@@ -70,10 +75,21 @@ class MeetingsController {
   }
 
   async postMeetingBit() {
-    console.log(this.request.body);
-
     return await this.mongoDBService.
       insert('meetings', {
+        title: this.request.body.title,
+        description: this.request.body.description,
+        date: this.request.body.date,
+        time: this.request.body.time,
+        participants: this.request.body.participants
+      });
+  }
+
+  async putMeetingBit() {
+    console.log("Putting " + this.request.body.title + " " + this.request.params.id)
+    return await this.mongoDBService.
+      update('meetings', { _id: ObjectId(this.request.params.id) },
+      {
         title: this.request.body.title,
         description: this.request.body.description,
         date: this.request.body.date,

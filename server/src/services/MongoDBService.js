@@ -47,6 +47,19 @@ class MongoDBService {
       });
     });
   }
+
+  update(collection, findParameters, updateParameters) {
+    return new Promise((resolve, reject) => {
+      this.database.collection(collection).updateOne(findParameters, { $set: updateParameters }, function (error) {
+        if (error) reject();
+  
+        resolve();
+      });
+    });
+  }
+
 }
+
+
 
 module.exports = MongoDBService;
