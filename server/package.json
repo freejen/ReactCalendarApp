@@ -2,10 +2,10 @@
   "name": "reactcalendarapp",
   "version": "1.0.0",
   "description": "Project for a University course in JavaScript.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,12 @@
   },
   "homepage": "https://github.com/freejen/ReactCalendarApp#readme",
   "dependencies": {
-    "express": "^4.18.1"
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mongodb": "^4.5.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.4"
   }
 }
