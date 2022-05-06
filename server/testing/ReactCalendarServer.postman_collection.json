@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "5f170024-8abb-495f-b204-5450ab24a0ed",
+		"name": "ReactCalendarServer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Meeting",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/meetings/627506c0c9197b2b56d33426",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"meetings",
+						"627506c0c9197b2b56d33426"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Meetings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/meetings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"meetings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Meeting",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "J.A.R.V.I.S. Dev",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Updating J.A.R.V.I.S. with  laguages from the Andromeda galaxy.",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-05-07",
+							"type": "text"
+						},
+						{
+							"key": "time",
+							"value": "11:30-16:30",
+							"type": "text"
+						},
+						{
+							"key": "participants",
+							"value": "[6274efe1497ef0ad1f90ee0d, 6274f033497ef0ad1f90ee0e, 62750295497ef0ad1f90ee14]",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/meetings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"meetings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Meeting",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "J.A.R.V.I.S. Dev",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Updating J.A.R.V.I.S. with  laguages from the Andromeda galaxy. (also add the new dialect of Titan-ese)",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-05-07",
+							"type": "text"
+						},
+						{
+							"key": "time",
+							"value": "11:30-16:30",
+							"type": "text"
+						},
+						{
+							"key": "participants",
+							"value": "[6274efe1497ef0ad1f90ee0d, 6274f033497ef0ad1f90ee0e, 62750295497ef0ad1f90ee14]",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/meetings/627506c0c9197b2b56d33426",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"meetings",
+						"627506c0c9197b2b56d33426"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Meeting",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/meetings/627514ff36770f8d80add631",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"meetings",
+						"627514ff36770f8d80add631"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
