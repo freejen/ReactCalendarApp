@@ -27,6 +27,26 @@ class MongoDBService {
       });
     });
   }
+
+  findOne(collection, parameters) {
+    return new Promise((resolve, reject) => {
+      this.database.collection(collection).findOne(parameters, function (error, data) {
+        if (error) reject();
+
+        resolve(data);
+      });
+    });
+  }
+
+  insert(collection, parameters) {
+    return new Promise((resolve, reject) => {
+      this.database.collection(collection).insertOne(parameters, function (error) {
+        if (error) reject();
+
+        resolve();
+      });
+    });
+  }
 }
 
 module.exports = MongoDBService;

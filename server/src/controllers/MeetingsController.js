@@ -13,15 +13,30 @@ class MeetingsController {
   }
 
   static registerRoutes(app) {
-    app.get('/meetings', (request, response) => {
-      let controller = new MeetingsController(request, response);
+    app.get('/users', (request, response) => {
+      const controller = new MeetingsController(request, response);
       // Had to bind the function to avoid this = undefiend in Bits.
+      controller.runfBitWithMongo(controller.getUsersBit.bind(controller));
+    });
+    
+    app.get('/meetings', (request, response) => {
+      const controller = new MeetingsController(request, response);
       controller.runfBitWithMongo(controller.getMeetingsBit.bind(controller));
     });
 
-    app.get('/users', (request, response) => {
-      let controller = new MeetingsController(request, response);
-      controller.runfBitWithMongo(controller.getUsersBit.bind(controller));
+    app.get('/meetings/:id', (request, response) => {
+      const controller = new MeetingsController(request, response);
+      controller.runfBitWithMongo(controller.getMeetingBit.bind(controller));
+    });
+    
+    app.get('/meetings/:id', (request, response) => {
+      const controller = new MeetingsController(request, response);
+      controller.runfBitWithMongo(controller.getMeetingBit.bind(controller));
+    });
+
+    app.post('/meetings', (request, response) => {
+      const controller = new MeetingsController(request, response);
+      controller.runfBitWithMongo(controller.postMeetingBit.bind(controller));
     });
   }
 
@@ -33,13 +48,39 @@ class MeetingsController {
   }
 
   async getUsersBit() {
-    return await this.mongoDBService.find('users');
+    return await this.mongoDBService.
+      find('users');
   }
 
   async getMeetingsBit() {
-    return await this.mongoDBService.find('meetings');
+    return await this.mongoDBService.
+      find('meetings');
   }
 
+  async getMeetingBit() {
+    console.log(this.request.params.id);
+    try {
+      return await this.mongoDBService.
+      findOne('meetings', { _id: ObjectId(this.request.params.id) });
+    }
+    catch (error){
+      console.log(error);
+      return {};
+    }
+  }
+
+  async postMeetingBit() {
+    console.log(this.request.body);
+
+    return await this.mongoDBService.
+      insert('meetings', {
+        title: this.request.body.title,
+        description: this.request.body.description,
+        date: this.request.body.date,
+        time: this.request.body.time,
+        participants: this.request.body.participants
+      });
+  }
   
 }
 
