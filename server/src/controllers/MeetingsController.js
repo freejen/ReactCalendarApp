@@ -43,6 +43,12 @@ class MeetingsController {
       const controller = new MeetingsController(request, response);
       controller.runfBitWithMongo(controller.putMeetingBit.bind(controller));
     });
+
+    app.delete('/meetings/:id', (request, response) => {
+      const controller = new MeetingsController(request, response);
+      controller.runfBitWithMongo(controller.deleteMeetingBit.bind(controller));
+    });
+
   }
 
   async runfBitWithMongo(f) {
@@ -86,7 +92,6 @@ class MeetingsController {
   }
 
   async putMeetingBit() {
-    console.log("Putting " + this.request.body.title + " " + this.request.params.id)
     return await this.mongoDBService.
       update('meetings', { _id: ObjectId(this.request.params.id) },
       {
@@ -97,7 +102,12 @@ class MeetingsController {
         participants: this.request.body.participants
       });
   }
-  
+
+  async deleteMeetingBit() {
+    return await this.mongoDBService.
+      delete('meetings', { _id: ObjectId(this.request.params.id) } );
+  }
+
 }
 
 module.exports = MeetingsController;
