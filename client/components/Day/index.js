@@ -1,10 +1,5 @@
 const Day = (props) => {
-
-    return (
-        <>
-        {props.day}
-        </>
-    );
-}
+  return <>{props.day}</>;
+};
 
 export default Day;
