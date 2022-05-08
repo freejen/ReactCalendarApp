@@ -50,11 +50,11 @@ const DayGrid = (props) => {
         </thead>
 
         <tbody>
-          {weeks.map((week) => {
+          {weeks.map((week, index) => {
             return (
-              <tr>
-                {week.map((day) => (
-                  <td>
+              <tr key={index}>
+                {week.map((day, index) => (
+                  <td key={index}>
                     <Day day={day} />
                   </td>
                 ))}
