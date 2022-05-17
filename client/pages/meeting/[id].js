@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 const Meeting = () => {
-  const [meeting, setMeeting] = useState('No data');
+  const [meeting, setMeeting] = useState(null);
   const [participantsNames, setParticipantsNames] = useState([]);
 
   const router = useRouter();
@@ -24,7 +24,7 @@ const Meeting = () => {
       fetch('http://localhost:3001/meetings/' + router.query.id)
         .then((res) => res.json())
         .then((meeting_json) => {
-          if (meeting_json._id) {
+          if (meeting_json._id != -1) {
             // Users
             fetch('http://localhost:3001/users')
               .then((res) => res.json())
@@ -34,11 +34,12 @@ const Meeting = () => {
               });
           }
           setMeeting(meeting_json);
-        });
+        })
+        .catch((err) => console.log('Error: ' + err));
     }
   }, [id]);
 
-  if (id && meeting._id) {
+  if (id && meeting && meeting._id != -1) {
     return (
       <>
         <h1>{meeting.title}</h1>
@@ -56,12 +57,14 @@ const Meeting = () => {
         <button onClick={deleteMeeting}>Delete</button>
       </>
     );
-  } else {
+  } else if (meeting && meeting._id == -1) {
     return (
       <>
         <h1>Given ID doesn't exist.</h1>
       </>
     );
+  } else {
+    return <></>;
   }
 };
 

@@ -79,11 +79,11 @@ class MeetingsController {
       if (ret) {
         return ret;
       } else {
-        return {};
+        return { _id: -1 };
       }
     } catch (error) {
       console.log(error);
-      return {};
+      return { _id: -1 };
     }
   }
 

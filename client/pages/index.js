@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <MonthSelector month="May" />
-      <DayGrid month="May" />
+      <DayGrid year="2022" month="May" />
     </div>
   );
 }
