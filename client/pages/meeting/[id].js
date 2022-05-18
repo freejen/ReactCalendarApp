@@ -50,10 +50,12 @@ const Meeting = () => {
           {meeting.date} | {meeting.time}
         </h3>
         <div>
+          <br />
           <h3>Description: </h3>
           {meeting.description}
         </div>
         <div>
+          <br />
           <h3>Participants:</h3>
           {participantsNames.map((participant) => participant.name).join(', ')}
         </div>
