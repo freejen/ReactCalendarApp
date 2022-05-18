@@ -5,7 +5,7 @@ import Stack from 'react-bootstrap/Stack';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
-import MyModal from '../MyModal';
+import NewMeetingModal from '../NewMeetingModal';
 
 const Day = (props) => {
   const [modalShow, setModalShow] = useState(false);
@@ -30,7 +30,7 @@ const Day = (props) => {
           </Button>
         )}
 
-        <MyModal show={modalShow} onHide={() => setModalShow(false)} />
+        <NewMeetingModal date={props.date} show={modalShow} onHide={() => setModalShow(false)} />
 
         {props.meetings.map((meeting) => (
           <Card key={meeting._id} onClick={() => goToMeetingDetails(meeting._id)} style={{ cursor: 'pointer' }}>

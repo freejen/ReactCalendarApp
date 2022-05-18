@@ -1,6 +1,9 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+
 const Meeting = () => {
   const [meeting, setMeeting] = useState(null);
   const [participantsNames, setParticipantsNames] = useState([]);
@@ -41,21 +44,24 @@ const Meeting = () => {
 
   if (id && meeting && meeting._id != -1) {
     return (
-      <>
+      <Container className="my-5">
         <h1>{meeting.title}</h1>
-        <h2>
+        <h3>
           {meeting.date} | {meeting.time}
-        </h2>
+        </h3>
         <div>
-          Description: <br /> {meeting.description}
+          <h3>Description: </h3>
+          {meeting.description}
+        </div>
+        <div>
+          <h3>Participants:</h3>
+          {participantsNames.map((participant) => participant.name).join(', ')}
         </div>
         <br />
-        <div>
-          Participants: <br /> {participantsNames.map((participant) => participant.name).join(', ')}
-        </div>
-        <br />
-        <button onClick={deleteMeeting}>Delete</button>
-      </>
+        <Button variant="danger" onClick={deleteMeeting}>
+          Delete
+        </Button>
+      </Container>
     );
   } else if (meeting && meeting._id == -1) {
     return (
