@@ -59,7 +59,7 @@ const DayGrid = (props) => {
   if (meetings) {
     return (
       <>
-        <Table>
+        <Table borderless>
           <thead>
             <tr>
               <th>
