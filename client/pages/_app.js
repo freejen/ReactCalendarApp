@@ -11,10 +11,10 @@ function MyApp({ Component, pageProps }) {
     <>
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container>
-          <Navbar.Brand href="http://localhost:3000/">Home</Navbar.Brand>
+          <Navbar.Brand href="http://localhost:3000/">Calendar</Navbar.Brand>
         </Container>
       </Navbar>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </>
   );
 }

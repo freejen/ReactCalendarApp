@@ -1,5 +1,9 @@
 import { useRouter } from 'next/router';
 
+import Stack from 'react-bootstrap/Stack';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+
 const Day = (props) => {
   let split = props.date.split('-');
   let day = split[split.length - 1];
@@ -14,14 +18,22 @@ const Day = (props) => {
 
   return (
     <>
-      <h3>{day}</h3>
-      {props.meetings.map((meeting) => (
-        <div key={meeting._id} onClick={() => goToMeetingDetails(meeting._id)} style={{ border: '1px solid black' }}>
-          {meeting.title}
-          <br />
-          {meeting.time}
-        </div>
-      ))}
+      <Stack gap={3}>
+        {day && (
+          <Button variant="dark" size="lg">
+            {day}
+          </Button>
+        )}
+
+        {props.meetings.map((meeting) => (
+          <Card key={meeting._id} onClick={() => goToMeetingDetails(meeting._id)} style={{ cursor: 'pointer' }}>
+            <Card.Body>
+              <Card.Title>{meeting.title}</Card.Title>
+              <Card.Text>{meeting.time}</Card.Text>
+            </Card.Body>
+          </Card>
+        ))}
+      </Stack>
     </>
   );
 };

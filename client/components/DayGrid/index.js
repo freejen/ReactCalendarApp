@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import Day from '../Day';
 
+import Table from 'react-bootstrap/Table';
+
 function generateDates(year, month) {
   let month_num = 5;
 
@@ -57,16 +59,30 @@ const DayGrid = (props) => {
   if (meetings) {
     return (
       <>
-        <table>
+        <Table>
           <thead>
             <tr>
-              <th>Mon</th>
-              <th>Tue</th>
-              <th>Wed</th>
-              <th>Thu</th>
-              <th>Fri</th>
-              <th>Sat</th>
-              <th>Sun</th>
+              <th>
+                <h3>Mon</h3>
+              </th>
+              <th>
+                <h3>Tue</h3>
+              </th>
+              <th>
+                <h3>Wed</h3>
+              </th>
+              <th>
+                <h3>Thu</h3>
+              </th>
+              <th>
+                <h3>Fri</h3>
+              </th>
+              <th>
+                <h3>Sat</h3>
+              </th>
+              <th>
+                <h3>Sun</h3>
+              </th>
             </tr>
           </thead>
 
@@ -83,7 +99,7 @@ const DayGrid = (props) => {
               );
             })}
           </tbody>
-        </table>
+        </Table>
       </>
     );
   } else {
