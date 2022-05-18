@@ -18,6 +18,8 @@ const Day = (props) => {
       {props.meetings.map((meeting) => (
         <div key={meeting._id} onClick={() => goToMeetingDetails(meeting._id)} style={{ border: '1px solid black' }}>
           {meeting.title}
+          <br />
+          {meeting.time}
         </div>
       ))}
     </>

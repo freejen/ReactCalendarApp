@@ -1,6 +1,9 @@
 import { Shake } from 'reshake';
 import { useState } from 'react';
 
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+
 const MonthSelector = (props) => {
   const [month, setMonth] = useState(props.month);
   const [shaking, setShaking] = useState(false);
@@ -18,8 +21,14 @@ const MonthSelector = (props) => {
         <h1>{month}</h1>
       </Shake>
 
-      <button onClick={shakeText}>&lt;</button>
-      <button onClick={shakeText}>&gt;</button>
+      <ButtonGroup aria-label="Basic example">
+        <Button variant="dark" onClick={shakeText}>
+          &lt;
+        </Button>
+        <Button variant="dark" onClick={shakeText}>
+          &gt;
+        </Button>
+      </ButtonGroup>
     </>
   );
 };
