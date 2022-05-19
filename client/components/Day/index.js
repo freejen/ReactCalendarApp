@@ -5,11 +5,7 @@ import Stack from 'react-bootstrap/Stack';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
-import NewMeetingModal from '../NewMeetingModal';
-
 const Day = (props) => {
-  const [modalShow, setModalShow] = useState(false);
-
   let split = props.date.split('-');
   let day = split[split.length - 1];
 
@@ -25,12 +21,16 @@ const Day = (props) => {
     <>
       <Stack gap={3}>
         {day && (
-          <Button onClick={() => setModalShow(true)} variant="light">
+          <Button
+            onClick={() => {
+              props.setModalShow(true);
+              props.setSelectedDate(props.date);
+            }}
+            variant="light"
+          >
             {day}
           </Button>
         )}
-
-        <NewMeetingModal date={props.date} show={modalShow} onHide={() => setModalShow(false)} />
 
         {props.meetings.map((meeting) => (
           <Card key={meeting._id} onClick={() => goToMeetingDetails(meeting._id)} style={{ cursor: 'pointer' }}>

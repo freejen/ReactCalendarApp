@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Day from '../Day';
+import NewMeetingModal from '../NewMeetingModal';
 
 import Table from 'react-bootstrap/Table';
 
@@ -41,8 +42,10 @@ function generateDates(year, month) {
 }
 
 const DayGrid = (props) => {
-  const [month, setMonth] = useState(props.month);
   const [meetings, setMeetings] = useState(null);
+  const [modalShow, setModalShow] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [refreshDataIndicator, setRefreshDataIndicator] = useState(false);
 
   useEffect(() => {
     fetch('http://localhost:3001/meetings')
@@ -50,7 +53,8 @@ const DayGrid = (props) => {
       .then((json) => {
         setMeetings(json);
       });
-  }, []);
+    console.log('Loading meetings data');
+  }, [refreshDataIndicator]);
 
   // Should be changed for different months
 
@@ -59,6 +63,14 @@ const DayGrid = (props) => {
   if (meetings) {
     return (
       <>
+        <NewMeetingModal
+          date={selectedDate}
+          show={modalShow}
+          onSubmit={() => {
+            setRefreshDataIndicator(!refreshDataIndicator);
+          }}
+          onHide={() => setModalShow(false)}
+        />
         <Table borderless>
           <thead>
             <tr>
@@ -92,7 +104,12 @@ const DayGrid = (props) => {
                 <tr key={index}>
                   {week.map((date, index) => (
                     <td key={index}>
-                      <Day date={date} meetings={meetings.filter((meeting) => meeting.date == date)} />
+                      <Day
+                        date={date}
+                        meetings={meetings.filter((meeting) => meeting.date == date)}
+                        setModalShow={setModalShow}
+                        setSelectedDate={setSelectedDate}
+                      />
                     </td>
                   ))}
                 </tr>
