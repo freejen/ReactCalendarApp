@@ -4,7 +4,7 @@ This project was a part of the course 'JavaScript programming language' taught b
 
 To run the app, run the server and the client. Detailed instructions can be found in server/README and cliet/README.
 
-![](misc/MainPage.png)
+![](misc/MainPage2.png)
 
 ![](misc/NewMeeting.png)
 
