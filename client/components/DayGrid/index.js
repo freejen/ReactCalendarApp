@@ -7,10 +7,10 @@ import Table from 'react-bootstrap/Table';
 function generateDates(year, month) {
   let month_num = 5;
 
-  const daysPerMonth = {
+  const days_per_month = {
     May: 31,
   };
-  const firstWeekdayInMonth = {
+  const first_weekday_in_month = {
     May: 6,
   };
 
@@ -19,16 +19,16 @@ function generateDates(year, month) {
 
   let col = 0;
   let total_valid = 0;
-  for (let i = 0; i < firstWeekdayInMonth[month]; i++) {
+  for (let i = 0; i < first_weekday_in_month[month]; i++) {
     week_dates.push('');
     col++;
   }
-  while (total_valid < daysPerMonth[month]) {
+  while (total_valid < days_per_month[month]) {
     while (col < 7) {
       week_dates.push(year + '-' + month_num + '-' + (total_valid + 1));
 
       total_valid++;
-      if (total_valid == daysPerMonth[month]) break;
+      if (total_valid == days_per_month[month]) break;
       col++;
     }
 

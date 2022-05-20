@@ -29,9 +29,9 @@ function NewMeetingModal(props) {
     if (event.target.checked) {
       setSelectedUsers(new Set(selectedUsers).add(event.target.id));
     } else {
-      const newSet = new Set(selectedUsers);
-      newSet.delete(event.target.id);
-      setSelectedUsers(newSet);
+      const new_set = new Set(selectedUsers);
+      new_set.delete(event.target.id);
+      setSelectedUsers(new_set);
     }
   };
 
