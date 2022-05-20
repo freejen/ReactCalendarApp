@@ -5,40 +5,40 @@ import NewMeetingModal from '../NewMeetingModal';
 import Table from 'react-bootstrap/Table';
 
 function generateDates(year, month) {
-  let month_num = 5;
+  let monthNum = 5;
 
-  const days_per_month = {
+  const daysPerMonth = {
     May: 31,
   };
-  const first_weekday_in_month = {
+  const firstWeekdayInMonth = {
     May: 6,
   };
 
-  let weeks_dates = [];
-  let week_dates = [];
+  let weeksDates = [];
+  let weekDates = [];
 
   let col = 0;
-  let total_valid = 0;
-  for (let i = 0; i < first_weekday_in_month[month]; i++) {
-    week_dates.push('');
+  let totalValid = 0;
+  for (let i = 0; i < firstWeekdayInMonth[month]; i++) {
+    weekDates.push('');
     col++;
   }
-  while (total_valid < days_per_month[month]) {
+  while (totalValid < daysPerMonth[month]) {
     while (col < 7) {
-      week_dates.push(year + '-' + month_num + '-' + (total_valid + 1));
+      weekDates.push(year + '-' + monthNum + '-' + (totalValid + 1));
 
-      total_valid++;
-      if (total_valid == days_per_month[month]) break;
+      totalValid++;
+      if (totalValid == daysPerMonth[month]) break;
       col++;
     }
 
-    weeks_dates.push(week_dates);
+    weeksDates.push(weekDates);
 
     col = 0;
-    week_dates = [];
+    weekDates = [];
   }
 
-  return weeks_dates;
+  return weeksDates;
 }
 
 const DayGrid = (props) => {

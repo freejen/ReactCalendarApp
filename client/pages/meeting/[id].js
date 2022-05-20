@@ -24,17 +24,17 @@ const Meeting = () => {
     if (id) {
       fetch('http://localhost:3001/meetings/' + router.query.id)
         .then((res) => res.json())
-        .then((meeting_json) => {
-          if (meeting_json._id != -1) {
+        .then((meetingJson) => {
+          if (meetingJson._id != -1) {
             // Users
             fetch('http://localhost:3001/users')
               .then((res) => res.json())
-              .then((users_json) => {
-                let participants = meeting_json.participants;
-                setParticipantsNames(users_json.filter((user) => participants.includes(user._id)));
+              .then((usersJson) => {
+                let participants = meetingJson.participants;
+                setParticipantsNames(usersJson.filter((user) => participants.includes(user._id)));
               });
           }
-          setMeeting(meeting_json);
+          setMeeting(meetingJson);
         })
         .catch((err) => console.log('Error: ' + err));
     }

@@ -16,8 +16,8 @@ function NewMeetingModal(props) {
   useEffect(() => {
     fetch('http://localhost:3001/users')
       .then((res) => res.json())
-      .then((users_json) => {
-        setUsers(users_json);
+      .then((usersJson) => {
+        setUsers(usersJson);
       });
   }, []);
 
@@ -29,9 +29,9 @@ function NewMeetingModal(props) {
     if (event.target.checked) {
       setSelectedUsers(new Set(selectedUsers).add(event.target.id));
     } else {
-      const new_set = new Set(selectedUsers);
-      new_set.delete(event.target.id);
-      setSelectedUsers(new_set);
+      const newSet = new Set(selectedUsers);
+      newSet.delete(event.target.id);
+      setSelectedUsers(newSet);
     }
   };
 
