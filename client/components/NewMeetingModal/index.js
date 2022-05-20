@@ -17,9 +17,7 @@ function NewMeetingModal(props) {
     fetch('http://localhost:3001/users')
       .then((res) => res.json())
       .then((users_json) => {
-        console.log(users_json);
         setUsers(users_json);
-        console.log(users);
       });
   }, []);
 
@@ -30,19 +28,15 @@ function NewMeetingModal(props) {
   const handleCheck = (event) => {
     if (event.target.checked) {
       setSelectedUsers(new Set(selectedUsers).add(event.target.id));
-      console.log(selectedUsers);
     } else {
       const newSet = new Set(selectedUsers);
       newSet.delete(event.target.id);
       setSelectedUsers(newSet);
-      console.log(selectedUsers);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(title.current.value);
-    console.log(selectedUsers);
 
     const details = {
       title: title.current.value,
@@ -52,22 +46,12 @@ function NewMeetingModal(props) {
       participants: Array.from(selectedUsers),
     };
 
-    var formBody = [];
-    for (var property in details) {
-      var encodedKey = encodeURIComponent(property);
-      var encodedValue = encodeURIComponent(details[property]);
-      formBody.push(encodedKey + '=' + encodedValue);
-    }
-    formBody = formBody.join('&');
-
-    console.log(formBody);
-
     fetch('http://localhost:3001/meetings', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: formBody,
+      body: new URLSearchParams(details),
     });
 
     props.onSubmit();

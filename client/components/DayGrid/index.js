@@ -53,7 +53,6 @@ const DayGrid = (props) => {
       .then((json) => {
         setMeetings(json);
       });
-    console.log('Loading meetings data');
   }, [refreshDataIndicator]);
 
   // Should be changed for different months

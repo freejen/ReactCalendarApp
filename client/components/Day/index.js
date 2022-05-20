@@ -12,8 +12,6 @@ const Day = (props) => {
   const router = useRouter();
 
   const goToMeetingDetails = (id) => {
-    console.log(id);
-
     router.push(`meeting/${id}`);
   };
 

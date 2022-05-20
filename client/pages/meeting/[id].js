@@ -14,14 +14,12 @@ const Meeting = () => {
   const deleteMeeting = () => {
     fetch('http://localhost:3001/meetings/' + id, {
       method: 'DELETE',
-    }).then((res) => console.log(res));
+    });
 
     router.push('http://localhost:3000/');
   };
 
   useEffect(() => {
-    console.log(`useEffect ${id}\n`);
-
     // Meeting details
     if (id) {
       fetch('http://localhost:3001/meetings/' + router.query.id)
@@ -66,11 +64,7 @@ const Meeting = () => {
       </Container>
     );
   } else if (meeting && meeting._id == -1) {
-    return (
-      <>
-        <h1>Given ID doesn't exist.</h1>
-      </>
-    );
+    return <h1>Given ID doesn't exist.</h1>;
   } else {
     return <></>;
   }
