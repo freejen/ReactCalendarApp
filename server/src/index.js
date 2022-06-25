@@ -15,7 +15,7 @@ registerRoutes(app, controller);
 app.listen(port, () => console.log(`API is listening on port ${port}!`));
 
 function registerRoutes(app, controller) {
-  app.get("/users", controller.getUsers.bind(controller));
+  app.get("/users", () => controller.getUsers());
 
   app.get("/meetings", controller.getMeetings.bind(controller));
 
